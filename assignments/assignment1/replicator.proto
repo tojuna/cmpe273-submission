@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package replicator_package;
+
+service repl {
+    rpc query(dml) returns (rec);
+}
+
+message dml {
+    string message = 1;
+}
+
+message rec {
+    string message = 1;
+    bool received = 2;
+}
