@@ -1,10 +1,14 @@
 # Read Me: 
 
-**1.** Shorten URL: *curl -X POST -d "https://www.facebook.com/" -H "Content-Type: text/plain" http://127.0.0.1:5000/shorten*
+## **1.** Shorten URL: 
+
+*curl -X POST -d "https://www.facebook.com/" -H "Content-Type: text/plain" http://127.0.0.1:5000/shorten*
 
 **Output:** New URL created: 127.0.0.1:5000/CvlqF
 
-**2.** Click on the newly generated link: http://127.0.0.1:5000/CvlqF . If we put this link in the browser we are redirected to long url website. Number of clicks increase for this short URL whenever you visit this link.
+## **2.** Click on the newly generated link: http://127.0.0.1:5000/CvlqF .
+
+If we put this link in the browser we are redirected to long url website. Number of clicks increase for this short URL whenever you visit this link.
 
 *curl http://127.0.0.1:5000/CvlqF*                            
 
