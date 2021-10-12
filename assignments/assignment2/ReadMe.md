@@ -1,8 +1,8 @@
-1. Shorten URL: curl -X POST -d "https://www.facebook.com/" -H "Content-Type: text/plain" http://127.0.0.1:5000/shorten
+**1.** Shorten URL: curl -X POST -d "https://www.facebook.com/" -H "Content-Type: text/plain" http://127.0.0.1:5000/shorten
 
-  **Output:** New URL created: 127.0.0.1:5000/CvlqF
+**Output:** New URL created: 127.0.0.1:5000/CvlqF
 
-2. Click on the newly generated link: http://127.0.0.1:5000/CvlqF . If we put this link in the browser we are redirected to long url website. 
+**2.** Click on the newly generated link: http://127.0.0.1:5000/CvlqF . If we put this link in the browser we are redirected to long url website. 
 
 curl http://127.0.0.1:5000/CvlqF                            
 
@@ -11,20 +11,20 @@ curl http://127.0.0.1:5000/CvlqF
 <h1>Redirecting...</h1>
 <p>You should be redirected automatically to target URL: <a href="https://www.facebook.com/">https://www.facebook.com/</a>. If not click the link. -->
 
-3. Find clicks for the shortened link '127.0.0.1:5000/CvlqF': 
+**3.** Find clicks for the shortened link '127.0.0.1:5000/CvlqF': 
 
 curl http://127.0.0.1:5000/clicks/127.0.0.1:5000/CvlqF       
 
-  **Output:** Number of clicks on this shortened link: 1
+**Output:** Number of clicks on this shortened link: 1
 
-4. Retrieve long URL for given short URL '127.0.0.1:5000/CvlqF':
+**4.** Retrieve long URL for given short URL '127.0.0.1:5000/CvlqF':
 
 curl http://127.0.0.1:5000/retrieve/127.0.0.1:5000/CvlqF     ok | 22:58:55 
 
-  **Output:** Long URL for given short url: https://www.facebook.com/
+**Output:** Long URL for given short url: https://www.facebook.com/
 
-5. Update clicks for the given short link using update PATCH:
+**5.** Update clicks for the given short link using update PATCH:
 
 curl -X PATCH -d '{"clicks": 5}' -H "Content-Type: application/json" http://127.0.0.1:5000/update/127.0.0.1:5000/CvlqF
 
-  **Output:** Updated count for given short link to: 5
+**Output:** Updated count for given short link to: 5
