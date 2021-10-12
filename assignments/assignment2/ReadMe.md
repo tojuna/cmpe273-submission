@@ -1,6 +1,6 @@
 1. Shorten URL: curl -X POST -d "https://www.facebook.com/" -H "Content-Type: text/plain" http://127.0.0.1:5000/shorten
 
-Output: New URL created: 127.0.0.1:5000/CvlqF
+**Output:** New URL created: 127.0.0.1:5000/CvlqF
 
 2. Click on the newly generated link: http://127.0.0.1:5000/CvlqF . If we put this link in the browser we are redirected to long url website. 
 
