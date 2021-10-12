@@ -11,13 +11,13 @@ Output: <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 <h1>Redirecting...</h1>
 <p>You should be redirected automatically to target URL: <a href="https://www.facebook.com/">https://www.facebook.com/</a>. If not click the link.
 
-3. Find clicks for the shortened link: 
+3. Find clicks for the shortened link '127.0.0.1:5000/CvlqF': 
 
 curl http://127.0.0.1:5000/clicks/127.0.0.1:5000/CvlqF       
 
 Output: Number of clicks on this shortened link: 1
 
-4. Retrieve long URL for given short URL:
+4. Retrieve long URL for given short URL '127.0.0.1:5000/CvlqF':
 
 curl http://127.0.0.1:5000/retrieve/127.0.0.1:5000/CvlqF     ok | 22:58:55 
 
