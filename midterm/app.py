@@ -6,13 +6,18 @@ import string
 app = Flask(__name__)
 
 m = {}
-total_users = 0; 
+
+
+@app.route('/')
+def home():
+    return str(m) 
+
 
 @app.route('/users', methods = ['POST'])
 def create_user():
     if request.headers['Content-Type'] == 'application/json':
         data = request.json
-        m[total_users + 100] =  (
+        m[len(m) + 100] =  (
             {
                 "id" : total_users + 100,
                 "name" : data["name"],
@@ -21,21 +26,23 @@ def create_user():
                 "followers" : []
             }
         )
-        js = json.dumps(m[total_users + 100])
-        total_users += 1
+        js = json.dumps(m[len(m) + 99])
 
         resp = Response(js, status=200, mimetype='application/json')
         return resp
 
-@app.route('/users/{user_id}/followers/{follower_id}', methods = ['PATCH'])
+@app.route('/users/<user_id>/followers/<follower_id>', methods = ['PATCH'])
 def folower(user_id, follower_id):
+    user_id = int(user_id)
+    follower_id = int(follower_id)
     m[user_id]["followers"].append(follower_id)
     js = json.dumps(m[user_id])
     resp = Response(js, status=200, mimetype='application/json')
     return resp
 
-@app.route('/users/{user_id}/tweets', methods = ['POST'])
+@app.route('/users/<user_id>/tweets', methods = ['POST'])
 def tweet(user_id):
+    user_id = int(user_id)
     if request.headers['Content-Type'] == 'application/json':
         data = request.json
         m[user_id]["tweets"].append({ "tweet_id" : len(m[user_id]["tweets"]) + 1, "tweet": data["tweet"]})
@@ -43,14 +50,16 @@ def tweet(user_id):
         resp = Response(js, status=200, mimetype='application/json')
         return resp
 
-@app.route('/users/{user_id}', methods = ['GET'])
+@app.route('/users/<user_id>', methods = ['GET'])
 def us(user_id):
-    js = json.dumps(m[user_id])
+    usi = user_id
+    js = json.dumps(m[int(usi)])
     resp = Response(js, status=200, mimetype='application/json')
     return resp
 
-@app.route('/users/{user_id}/timeline', methods = ['GET'])
+@app.route('/users/<user_id>', methods = ['GET'])
 def timeline(user_id):
+    user_id = int(user_id)
     templ = [user_id]
     for num in m[user_id]["followers"]:
         templ.append(num)
@@ -66,4 +75,5 @@ def timeline(user_id):
         
 
 if __name__ == '__main__':
+    total_users = 0
     app.run(port=5000, debug=True)
