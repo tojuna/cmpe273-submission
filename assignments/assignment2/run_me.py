@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect
+from flask import Flask, request, redirect, json
 from flask.helpers import url_for
 import random
 import string
