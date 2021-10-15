@@ -57,7 +57,7 @@ def us(user_id):
     resp = Response(js, status=200, mimetype='application/json')
     return resp
 
-@app.route('/users/<user_id>', methods = ['GET'])
+@app.route('/users/<user_id>/timeline', methods = ['GET'])
 def timeline(user_id):
     user_id = int(user_id)
     templ = [user_id]
